@@ -22,7 +22,15 @@ namespace MenuAndOrderLibrary.Tests
 
             Assert.Equal(80.75m, total);
         }
+        [Fact]
+        public void UpdateOrderStatus_ShouldUpdateStatusCorrectly()
+        {
+            var order = new Order(1);
+            order.UpdateOrderStatus("Готується");
+            order.UpdateOrderStatus("Готово");
 
+            Assert.Equal("Готово", order.Status);
+        }
     }
 
-   
+}
