@@ -31,6 +31,14 @@ namespace MenuAndOrderLibrary.Tests
 
             Assert.Equal("Готово", order.Status);
         }
+
+        [Fact]
+        public void UpdateOrderStatus_ShouldThrowForInvalidStatusChange()
+        {
+            var order = new Order(1);
+
+            Assert.Throws<InvalidOperationException>(() => order.UpdateOrderStatus("Готово"));
+        }
     }
 
 }
