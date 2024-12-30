@@ -33,11 +33,28 @@ namespace MenuAndOrderLibrary.Tests
         }
 
         [Fact]
+        
         public void UpdateOrderStatus_ShouldThrowForInvalidStatusChange()
         {
             var order = new Order(1);
 
             Assert.Throws<InvalidOperationException>(() => order.UpdateOrderStatus("Готово"));
+
+
+            // 2. Правильна зміна статусу на "Готується"
+            order.UpdateOrderStatus("Готується");
+
+            // 3. Спроба повернутися назад на "Очікує" (недопустимо)
+            Assert.Throws<InvalidOperationException>(() => order.UpdateOrderStatus("Очікує"));
+
+            // 4. Спроба змінити статус на недопустимий (наприклад, "Скасовано", якщо його немає в списку)
+            Assert.Throws<InvalidOperationException>(() => order.UpdateOrderStatus("Скасовано"));
+
+            // 5. Зміна статусу на "Готово" (завершення замовлення)
+            order.UpdateOrderStatus("Готово");
+
+            // 6. Спроба змінити статус після завершення
+            Assert.Throws<InvalidOperationException>(() => order.UpdateOrderStatus("Готується"));
         }
     }
 
