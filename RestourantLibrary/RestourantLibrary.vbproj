@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>RestourantLibrary</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Dish.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderManager.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lab3\Lab3.csproj" />
+  </ItemGroup>
+
+</Project>
